@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Party(models.Model):
-    name = models.CharField(max_length=100)
+    partyName = models.CharField(max_length=100)
     type = models.CharField(max_length=100)
     menu = models.CharField(max_length=100)
     host = models.CharField(max_length=100)
