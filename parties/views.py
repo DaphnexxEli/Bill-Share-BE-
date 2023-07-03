@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from suggester.models import SuggestedWord
+# from suggester.models import SuggestedWord
 from django.http import JsonResponse
 
 # Create your views here.
@@ -16,7 +16,7 @@ class MemberViewSet(viewsets.ModelViewSet):
     serializer_class = MemberSerializer
 
 
-class suggest_words(request):
-    query = request.GET.get('query', '')
-    suggested_words = SuggestedWord.objects.filter(word__istartswith=query).values_list('word', flat=True)
-    return JsonResponse(list(suggested_words), safe=False)
+# class suggest_words(request):
+#     query = request.GET.get('query', '')
+#     suggested_words = SuggestedWord.objects.filter(word__istartswith=query).values_list('word', flat=True)
+#     return JsonResponse(list(suggested_words), safe=False)
