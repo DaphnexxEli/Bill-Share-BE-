@@ -1,0 +1,30 @@
+[
+  {
+    "model": "menus.restaurant",
+    "pk": 1,
+    "fields": {
+      "name": "The Bistro"
+    }
+  },
+  {
+    "model": "menus.restaurant",
+    "pk": 2,
+    "fields": {
+      "name": "Sushi Express"
+    }
+  },
+  {
+    "model": "menus.restaurant",
+    "pk": 3,
+    "fields": {
+      "name": "Mamma Mia Pizzeria"
+    }
+  },
+  {
+    "model": "menus.restaurant",
+    "pk": 4,
+    "fields": {
+      "name": "Café del Sol"
+    }
+  }
+]

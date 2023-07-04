@@ -1,3 +1,8 @@
 billshare/__pycache__
+env
 users/__pycache__
 users/migrations/__pycache__
+menus/__pycache__
+menus/migrations/__pycache__
+parties/__pycache__
+parties/migrations/__pycache__

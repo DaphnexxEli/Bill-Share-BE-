@@ -1,0 +1,101 @@
+[
+  {
+    "model": "menus.menuitem",
+    "pk": 1,
+    "fields": {
+      "restaurant": 1,
+      "name": "Grilled Salmon",
+      "price": 150
+    }
+  },
+  {
+    "model": "menus.menuitem",
+    "pk": 2,
+    "fields": {
+      "restaurant": 1,
+      "name": "Filet Mignon",
+      "price": 250
+    }
+  },
+  {
+    "model": "menus.menuitem",
+    "pk": 3,
+    "fields": {
+      "restaurant": 1,
+      "name": "Caesar Salad",
+      "price": 100
+    }
+  },
+  {
+    "model": "menus.menuitem",
+    "pk": 4,
+    "fields": {
+      "restaurant": 2,
+      "name": "Sushi Combo",
+      "price": 120
+    }
+  },
+  {
+    "model": "menus.menuitem",
+    "pk": 5,
+    "fields": {
+      "restaurant": 2,
+      "name": "Sashimi Platter",
+      "price": 180
+    }
+  },
+  {
+    "model": "menus.menuitem",
+    "pk": 6,
+    "fields": {
+      "restaurant": 3,
+      "name": "Margherita Pizza",
+      "price": 90
+    }
+  },
+  {
+    "model": "menus.menuitem",
+    "pk": 7,
+    "fields": {
+      "restaurant": 3,
+      "name": "Pepperoni Pizza",
+      "price": 130
+    }
+  },
+  {
+    "model": "menus.menuitem",
+    "pk": 8,
+    "fields": {
+      "restaurant": 3,
+      "name": "Caprese Salad",
+      "price": 70
+    }
+  },
+  {
+    "model": "menus.menuitem",
+    "pk": 9,
+    "fields": {
+      "restaurant": 4,
+      "name": "Espresso",
+      "price": 50
+    }
+  },
+  {
+    "model": "menus.menuitem",
+    "pk": 10,
+    "fields": {
+      "restaurant": 4,
+      "name": "Cappuccino",
+      "price": 80
+    }
+  },
+  {
+    "model": "menus.menuitem",
+    "pk": 11,
+    "fields": {
+      "restaurant": 4,
+      "name": "Croissant",
+      "price": 60
+    }
+  }
+]
