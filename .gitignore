@@ -10,3 +10,4 @@ parties/__pycache__
 parties/migrations
 menus/__pycache__
 menus/migrations
+users/migrations
