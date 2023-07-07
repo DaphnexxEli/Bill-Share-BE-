@@ -31,7 +31,7 @@ class LoginView(APIView):
             'email': user.email,
             'first_name': user.first_name,
             'phone': user.phone,
-            'is_superuser': user.is_superuser,
+            'is_staff': user.is_staff,
             'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
             'iat': datetime.datetime.utcnow(),
         }
@@ -43,14 +43,14 @@ class LoginView(APIView):
         response.set_cookie(key='email', value=user.email, httponly=True)
         response.set_cookie(key='first_name', value=user.first_name, httponly=True)
         response.set_cookie(key='phone', value=user.phone, httponly=True)
-        response.set_cookie(key='is_superuser', value=user.is_superuser, httponly=True)
+        response.set_cookie(key='is_staff', value=user.is_staff, httponly=True)
         
         response.data = {
             'jwt': token,
             'first_name': user.first_name,
             'email': user.email,
             'phone': user.phone,
-            'is_superuser' : user.is_superuser
+            'is_staff' : user.is_staff
         }
         return response
 

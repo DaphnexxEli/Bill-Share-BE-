@@ -1,13 +1,33 @@
-billshare/__pycache__
-env
-users/__pycache__
-users/migrations/__pycache__
-menus/__pycache__
-menus/migrations/__pycache__
-parties/__pycache__
-parties/migrations/__pycache__
-parties/__pycache__
-parties/migrations
-menus/__pycache__
-menus/migrations
-users/migrations
+# Ignore virtual environment
+venv/
+env/
+
+# Ignore environment variables
+.env*
+*.env
+
+# Ignore Python bytecode
+*.pyc
+__pycache__/
+
+# Ignore SQLite database
+*.sqlite3
+
+# Ignore static and media files
+staticfiles/
+static/
+media/
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.swp
+*.swo
+
+# Ignore Node.js modules
+node_modules/
+
+# Ignore build or distribution directories
+build/
+dist/
