@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from menus.views import RestaurantViewSet, MenuItemViewSet
+# from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 router = routers.DefaultRouter()
 router.register(r'restaurants', RestaurantViewSet)
@@ -28,4 +29,6 @@ urlpatterns = [
     path('users/', include('django.contrib.auth.urls')),
     path('users/', include('users.urls')),
     path('api/', include(router.urls)),
+    # path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # URL สำหรับการร้องขอ Access Token
+    # path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),  # URL สำหรับการร้องขอ Refresh Token
 ]
