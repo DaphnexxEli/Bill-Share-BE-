@@ -6,6 +6,7 @@ class Party(models.Model):
     type = models.CharField(max_length=100)
     menu = models.CharField(max_length=100)
     host = models.CharField(max_length=100)
+    code = models.CharField(max_length=10)
 
 class Member(models.Model):
     name = models.CharField(max_length=100)

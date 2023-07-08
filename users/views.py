@@ -6,6 +6,7 @@ from .models import User
 from .serializers import UserSerializer
 import datetime
 import jwt
+from billshare.settings import SECRET_KEY
 
 # Create your views here.
 class RegisterView(APIView):
@@ -38,7 +39,7 @@ class LoginView(APIView):
             'iat': datetime.datetime.utcnow(),
         }
 
-        token = jwt.encode(payload, 'secret', algorithm='HS256')
+        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
 
         response = Response()
         response.set_cookie(key='jwt', value=token, httponly=True)
@@ -73,7 +74,7 @@ class UserView(APIView):
         if not token:
             raise AuthenticationFailed('Unauthenticated!')
         try:
-            payload = jwt.decode(token, 'secret', algorithms=['HS256'])
+            payload = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
         except jwt.ExpiredSignatureError:
             raise AuthenticationFailed('Unauthenticated!')
 
