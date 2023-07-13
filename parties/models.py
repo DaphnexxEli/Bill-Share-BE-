@@ -5,8 +5,8 @@ class Party(models.Model):
     partyName = models.CharField(max_length=30)
     type = models.CharField(max_length=100)
     menu = models.CharField(max_length=30)
-    # host = models.CharField(max_length=100)
-    Code = models.CharField(max_length=10, unique=True, default='')
+    host = models.CharField(max_length=100, default="")
+    Code = models.CharField(max_length=5, unique=True, default='')
 
 class Member(models.Model):
     party = models.ForeignKey(Party, on_delete=models.CASCADE, default='')

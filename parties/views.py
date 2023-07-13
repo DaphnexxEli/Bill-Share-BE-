@@ -6,8 +6,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from billshare.settings import SECRET_KEY
 import jwt
+import users
 
 # Create your views here.
 from rest_framework import viewsets
@@ -25,6 +27,8 @@ class MemberViewSet(viewsets.ModelViewSet):
     serializer_class = MemberSerializer
 
 class CreateParty(APIView):
+    permission_classes = [IsAuthenticated]
+
     def post(self, request):
         token = request.COOKIES.get('jwt')
         if not token:
@@ -33,7 +37,7 @@ class CreateParty(APIView):
             payload = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
         except jwt.ExpiredSignatureError:
             raise AuthenticationFailed('Unauthenticated!')
-        
+        user = users.objects.filter(id=payload['id']).first()
         serializer = PartySerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -41,6 +45,8 @@ class CreateParty(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class Joinparty(APIView):
+    permission_classes = [IsAuthenticated]
+
     def post(self, request):
         token = request.COOKIES.get("jwt")
         if not token:

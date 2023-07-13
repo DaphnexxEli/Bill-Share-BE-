@@ -4,9 +4,9 @@ from django.urls import path
 # from suggester.views import suggest_words
 
 urlpatterns = [
-    path('partyset', PartyViewSet.as_view()),
-    path('memberset', MemberViewSet.as_view()),
-    path('joinParty', Joinparty.as_view()),
+    path('partyset', PartyViewSet.as_view({"__all__"})),
+    path('memberset', MemberViewSet.as_view({"__all__"})),
+    path('joinParty', Joinparty.as_view()), 
     path('createParty', CreateParty.as_view())
     # path('api/suggest-words/', suggest_words, name='suggest-words')
    

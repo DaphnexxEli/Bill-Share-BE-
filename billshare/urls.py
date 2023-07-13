@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from menus.views import RestaurantViewSet, MenuItemViewSet
-from parties.views import PartyViewSet, MemberViewSet, Joinparty,CreateParty
+from parties.views import PartyViewSet, MemberViewSet
 # from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 router = routers.DefaultRouter()
@@ -32,8 +32,7 @@ urlpatterns = [
     path('users/', include('django.contrib.auth.urls')),
     path('users/', include('users.urls')),
     path('api/', include(router.urls)),
-    path('parties/', Joinparty.as_view()),
-    path('createparty/', CreateParty.as_view())
+    path('parties/', include('parties.urls')),
     
     # path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # URL สำหรับการร้องขอ Access Token
     # path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),  # URL สำหรับการร้องขอ Refresh Token

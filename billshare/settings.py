@@ -46,11 +46,16 @@ INSTALLED_APPS = [
     'parties',
 ]
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': [
-#         'rest_framework_simplejwt.authentication.JWTAuthentication',
-#     ],
+# JWT_AUTH = {
+#     'JWT_SECRET_KEY': SECRET_KEY,
 # }
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'billshare.authentication.JWTAuthentication',
+    ],
+}
 
 # SIMPLE_JWT = {
 #     'ACCESS_TOKEN_LIFETIME' : timedelta(minutes=5),

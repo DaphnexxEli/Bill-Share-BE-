@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
-# from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from .models import User
 from .serializers import UserSerializer
 import datetime
@@ -10,6 +10,8 @@ from billshare.settings import SECRET_KEY
 
 # Create your views here.
 class RegisterView(APIView):
+    permission_classes = [AllowAny]
+
     def post(self, request):
         serializer = UserSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -18,6 +20,8 @@ class RegisterView(APIView):
 
 
 class LoginView(APIView):
+    permission_classes = [AllowAny]
+
     def post(self, request):
         email = request.data['email']
         password = request.data['password']
@@ -33,6 +37,7 @@ class LoginView(APIView):
             'id': user.id,
             'email': user.email,
             'first_name': user.first_name,
+            'last_name': user.last_name,
             'phone': user.phone,
             'is_staff': user.is_staff,
             'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
@@ -45,12 +50,14 @@ class LoginView(APIView):
         response.set_cookie(key='jwt', value=token, httponly=True)
         response.set_cookie(key='email', value=user.email, httponly=True)
         response.set_cookie(key='first_name', value=user.first_name, httponly=True)
+        response.set_cookie(key='last_name', value=user.last_name, httponly=True)
         response.set_cookie(key='phone', value=user.phone, httponly=True)
         response.set_cookie(key='is_staff', value=user.is_staff, httponly=True)
         
         response.data = {
             'jwt': token,
             'first_name': user.first_name,
+            'last_name': user.last_name,
             'email': user.email,
             'phone': user.phone,
             'is_staff' : user.is_staff
