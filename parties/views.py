@@ -18,11 +18,15 @@ from .serializers import PartySerializer, MemberSerializer
 
 
 class PartyViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
+    
     queryset = Party.objects.all()
     serializer_class = PartySerializer
 
 
 class MemberViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
+    
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
 
