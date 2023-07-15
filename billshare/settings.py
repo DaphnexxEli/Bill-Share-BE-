@@ -67,9 +67,9 @@ SIMPLE_JWT = {
     'TOKEN_TYPE_CLAIM': 'token_type',
 }
 
-AUTHENTICATION_BACKENDS = [
-    'rest_framework_simplejwt.authentication.JWTAuthentication'
-]
+# AUTHENTICATION_BACKENDS = [
+#     'rest_framework_simplejwt.authentication.JWTAuthentication'
+# ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
