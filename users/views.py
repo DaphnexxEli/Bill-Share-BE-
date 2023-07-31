@@ -60,3 +60,19 @@ class LogoutView(APIView):
             'message': 'success'
         }
         return response
+
+class ResetPasswordView(APIView):
+    def post(self, request, format=None):
+        email = request.data.get('email', None)
+        new_password = request.data.get('new_password', None)
+
+        if not email or not new_password:
+            return Response({'error': 'Email and new password are required'}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            user = User.objects.get(email=email)
+            user.set_password(new_password)
+            user.save()
+            return Response({'message': 'Password reset successful'}, status=status.HTTP_200_OK)
+        except User.DoesNotExist:
+            return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)

@@ -1,0 +1,69 @@
+[
+  {
+    "model": "parties.party",
+    "pk": 1,
+    "fields": {
+      "partyName": "Party 1",
+      "type": "Food&Drink",
+      "menu": 1,
+      "host": "John",
+      "Code": "ABC12",
+      "orderList": [
+        {
+          "id": 1,
+          "name": "Apple",
+          "price": 200,
+          "cost": 100,
+          "pay": ["John", "Jane"]
+        },
+        {
+          "id": 2,
+          "name": "Banana",
+          "price": 100,
+          "cost": 100,
+          "pay": ["John"]
+        }
+      ]
+    }
+  },
+  {
+    "model": "parties.party",
+    "pk": 2,
+    "fields": {
+      "partyName": "Party 2",
+      "type": "Home&Hotel",
+      "menu": 2,
+      "host": "Jane",
+      "Code": "DEF45",
+      "orderList": [
+        {
+          "id": 3,
+          "name": "Orange",
+          "price": 100,
+          "cost": 25,
+          "pay": ["John", "Jane", "Bob", "Alice"]
+        }
+      ]
+    }
+  },
+  {
+    "model": "parties.party",
+    "pk": 3,
+    "fields": {
+      "partyName": "Party 3",
+      "type": "Subscribe&Service",
+      "menu": 3,
+      "host": "Bob",
+      "Code": "GHI78",
+      "orderList": [
+        {
+          "id": 4,
+          "name": "Pineapple",
+          "price": 300,
+          "cost": 150,
+          "pay": ["Bob", "Alice"]
+        }
+      ]
+    }
+  }
+]
