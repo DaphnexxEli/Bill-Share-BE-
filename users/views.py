@@ -62,6 +62,8 @@ class LogoutView(APIView):
         return response
 
 class ResetPasswordView(APIView):
+    permission_classes = [AllowAny]
+
     def post(self, request, format=None):
         email = request.data.get('email', None)
         new_password = request.data.get('new_password', None)

@@ -34,3 +34,11 @@ class getPartyByCode(APIView):
             return Response(serializer.data)
         except Party.DoesNotExist:
             return Response({"error": "Party not found"}, status=status.HTTP_404_NOT_FOUND)
+
+class MemberListView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, party_id, format=None):
+        member = Member.objects.filter(party=party_id)
+        serializer = MemberSerializer(member, many=True)
+        return Response(serializer.data)
