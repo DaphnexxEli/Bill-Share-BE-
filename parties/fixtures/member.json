@@ -5,7 +5,7 @@
     "fields": {
       "party": 1,
       "name": "John",
-      "cost": 50
+      "cost": 200
     }
   },
   {
@@ -14,7 +14,7 @@
     "fields": {
       "party": 1,
       "name": "Jane",
-      "cost": 50
+      "cost": 100
     }
   },
   {

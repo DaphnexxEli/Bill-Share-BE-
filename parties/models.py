@@ -8,7 +8,7 @@ class Party(models.Model):
     menu = models.ForeignKey(Restaurant, on_delete=models.CASCADE, blank=True, null=True)
     host = models.CharField(max_length=100, default="")
     Code = models.CharField(max_length=5, unique=True, default='')
-    orderList = models.JSONField(blank=True, null=True)
+    orderList = models.JSONField(default=list, blank=True, null=True)
 
 class Member(models.Model):
     party = models.ForeignKey(Party, on_delete=models.CASCADE, default='')
