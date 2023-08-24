@@ -33,6 +33,7 @@ class UserView(APIView):
         user = User.objects.get(id=decoded_token["user_id"])
 
         response = Response()
+        response.set_cookie(key="userID", value=user.id, httponly=True)
         response.set_cookie(key="email", value=user.email, httponly=True)
         response.set_cookie(key="first_name", value=user.first_name, httponly=True)
         response.set_cookie(key="last_name", value=user.last_name, httponly=True)
@@ -40,6 +41,7 @@ class UserView(APIView):
         response.set_cookie(key="is_staff", value=user.is_staff, httponly=True)
 
         response.data = {
+            "userID": user.id,
             "first_name": user.first_name,
             "last_name": user.last_name,
             "email": user.email,

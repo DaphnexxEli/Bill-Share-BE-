@@ -10,11 +10,11 @@ from django.shortcuts import get_object_or_404
 # Create your views here.
 from rest_framework import viewsets
 from .models import Party, Member
-from .serializers import PartySerializer, MemberSerializer
+from .serializers import PartySerializer, MemberSerializer, MemberlistSerializer
 
 
 class PartyViewSet(viewsets.ModelViewSet):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     queryset = Party.objects.all()
     serializer_class = PartySerializer
@@ -29,7 +29,7 @@ class PartyViewSet(viewsets.ModelViewSet):
 
 
 class MemberViewSet(viewsets.ModelViewSet):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
@@ -61,12 +61,14 @@ class MemberListView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request, party_id, format=None):
-        member = Member.objects.filter(party=party_id)
-        serializer = MemberSerializer(member, many=True)
+        members = Member.objects.filter(party=party_id).select_related('userID')
+        serializer = MemberlistSerializer(members, many=True)
         return Response(serializer.data)
 
 
 class PartyUpdateView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def put(self, request, party_id, format=None):
         party = get_object_or_404(Party, id=party_id)
         serializer = PartySerializer(party, data=request.data)
