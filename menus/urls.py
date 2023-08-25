@@ -1,8 +1,8 @@
-from django.urls import path, include
-from .views import RestaurantViewSet, MenuItemViewSet
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('restaurantset', RestaurantViewSet.as_view()),
-    path('menuset', MenuItemViewSet.as_view()),
-   
+    path('restaurantset', views.RestaurantViewSet.as_view({"__all__"})),
+    path('menuset', views.MenuItemViewSet.as_view({"__all__"})),
+    path('menuitems/<int:restaurant_id>/', views.MenuItemListView.as_view()),
 ]
