@@ -4,8 +4,8 @@ from users.models import User
 
 TYPE_CHOICES = [
     ('F', 'Food&Drink'),
-    ('H', 'Home&Hotel'),
-    ('S', 'Subscribe&Service'),
+    ('H', 'Home&Rental'),
+    ('S', 'Subscription&Service'),
 ]
 
 # Create your models here.
