@@ -9,8 +9,10 @@ from django.shortcuts import get_object_or_404
 
 # Create your views here.
 from rest_framework import viewsets
+
+from users.models import User
 from .models import Party, Member
-from .serializers import PartySerializer, MemberSerializer, MemberlistSerializer
+from .serializers import HistorySerializer, PartySerializer, MemberSerializer, MemberlistSerializer
 
 
 class PartyViewSet(viewsets.ModelViewSet):
@@ -66,13 +68,10 @@ class MemberListView(APIView):
         return Response(serializer.data)
 
 
-class PartyUpdateView(APIView):
-    permission_classes = [IsAuthenticated]
+class getPartyByUserIdView(APIView):
+    permission_classes = [AllowAny]
 
-    def put(self, request, party_id, format=None):
-        party = get_object_or_404(Party, id=party_id)
-        serializer = PartySerializer(party, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def get(self, request, user_id, format=None):
+        members = Member.objects.filter(userID_id=user_id)
+        serializer = HistorySerializer(members, many=True)
+        return Response(serializer.data)

@@ -6,5 +6,5 @@ urlpatterns = [
     path('memberset', views.MemberViewSet.as_view({"__all__"})),
     path('party/<str:code>/', views.getPartyByCode.as_view()),
     path('memberlist/<int:party_id>/', views.MemberListView.as_view()),
-    path('updateParty/<int:party_id>', views.PartyUpdateView.as_view()),
+    path('history/<int:user_id>', views.getPartyByUserIdView.as_view()),
 ]
