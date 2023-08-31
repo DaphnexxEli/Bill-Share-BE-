@@ -37,13 +37,14 @@ class MemberViewSet(viewsets.ModelViewSet):
     serializer_class = MemberSerializer
 
     @action(detail=True, methods=["patch"])
-    def update_cost(self, request, pk=None):
+    def upload_slip(self, request, pk=None):
         member = self.get_object()
-        cost = request.data.get("cost")
-        member.cost = cost
+        slip = request.data.get("slipImage")
+        if(member.slipImage):
+            member.slipImage.delete(save=False)
+        member.slipImage = slip
         member.save()
-        return Response({"status": "Cost updated successfully"})
-
+        return Response({"status": "Upload image successfully"}, status=status.HTTP_200_OK)
 
 class getPartyByCode(APIView):
     permission_classes = [IsAuthenticated]

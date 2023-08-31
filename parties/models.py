@@ -23,4 +23,4 @@ class Member(models.Model):
     party = models.ForeignKey(Party, on_delete=models.CASCADE, default='')
     userID = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True, related_name='members')
     cost = models.DecimalField(max_digits=7, decimal_places=2, default=0)
-    slipImage = models.ImageField(upload_to='memberslip_images/', blank=True, null=True)
+    slipImage = models.ImageField(upload_to='memberslip_images/%Y/%m/%d/', blank=True, null=True)
