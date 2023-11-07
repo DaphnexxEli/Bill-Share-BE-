@@ -1,0 +1,56 @@
+[
+  {
+    "model": "parties.member",
+    "pk": 1,
+    "fields": {
+      "party": 1,
+      "name": "John",
+      "cost": 200
+    }
+  },
+  {
+    "model": "parties.member",
+    "pk": 2,
+    "fields": {
+      "party": 1,
+      "name": "Jane",
+      "cost": 100
+    }
+  },
+  {
+    "model": "parties.member",
+    "pk": 3,
+    "fields": {
+      "party": 2,
+      "name": "Bob",
+      "cost": 75
+    }
+  },
+  {
+    "model": "parties.member",
+    "pk": 4,
+    "fields": {
+      "party": 2,
+      "name": "Alice",
+      "cost": 75
+    }
+  },
+  {
+    "model": "parties.member",
+    "pk": 5,
+    "fields": {
+      "party": 3,
+      "name": "Mark",
+      "cost": 100
+    }
+  },
+  {
+    "model": "parties.member",
+    "pk": 6,
+    "fields": {
+      "party": 3,
+      "name": "Gina",
+      "cost": 100
+    }
+  }
+]

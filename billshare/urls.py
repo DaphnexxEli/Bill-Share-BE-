@@ -16,9 +16,30 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
+from menus.views import RestaurantViewSet, MenuItemViewSet
+from parties.views import PartyViewSet, MemberViewSet
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
+from django.conf import settings
+from django.conf.urls.static import static
+
+router = routers.DefaultRouter()
+router.register(r'restaurants', RestaurantViewSet)
+router.register(r'menuitems', MenuItemViewSet)
+router.register(r'partyset', PartyViewSet)
+router.register(r'memberset', MemberViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('django.contrib.auth.urls')),
-    path('users/', include('users.urls'))
+    path('users/', include('users.urls')),
+    path('menus/', include('menus.urls')),
+    path('parties/', include('parties.urls')),
+    path('api/', include(router.urls)),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),  
+    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),  
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
